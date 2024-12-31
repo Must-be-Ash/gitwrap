@@ -77,7 +77,7 @@ export default function RootLayout({
             {children}
           </main>
           
-          <footer className="text-center py-4 text-gray-400">
+          <footer className="text-center py-4 text-gray-400 bg-[#222222]">
             built by{' '}
             <Link 
               href="https://mustbeash.com" 
