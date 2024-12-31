@@ -2,10 +2,16 @@
 
 import { motion } from "framer-motion"
 import TextPathDraw from "@/components/TextPathDraw"
-import Link from "next/link"
 import { FaGithub } from "react-icons/fa"
+import { getGitHubAuthUrl } from "@/lib/auth"
 
 export default function LandingPage() {
+  const handleLogin = () => {
+    const authUrl = getGitHubAuthUrl();
+    console.log('Redirecting to GitHub:', authUrl);
+    window.location.href = authUrl;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white">
       <div className="container mx-auto min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 px-4 py-8 md:px-8">
@@ -22,7 +28,7 @@ export default function LandingPage() {
             transition={{ delay: 1.5, duration: 0.5 }}
             className="relative group w-full max-w-[300px]"
           >
-            <Link href="/dashboard" className="block">
+            <button onClick={handleLogin} className="block w-full">
               {/* Neon border effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-green-400 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse" />
               
@@ -39,7 +45,7 @@ export default function LandingPage() {
                 className="absolute inset-0 border-2 border-green-500 rounded-lg pointer-events-none"
                 style={{ boxShadow: '0 0 15px #00ff00' }} 
               />
-            </Link>
+            </button>
 
             {/* CRT scan line effect */}
             <div className="absolute inset-0 rounded-lg overflow-hidden pointer-events-none">

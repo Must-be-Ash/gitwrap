@@ -5,9 +5,11 @@ import { fetchGitHubStats } from '@/lib/github';
 export async function GET() {
   const cookieStore = cookies();
   const token = cookieStore.get('github_token');
+  const testCookie = cookieStore.get('test_cookie');
 
   console.log('Cookie check:', { 
     hasToken: !!token?.value,
+    hasTestCookie: !!testCookie?.value,
     cookieKeys: cookieStore.getAll().map(c => c.name),
     tokenLength: token?.value?.length
   });

@@ -75,17 +75,25 @@ export async function GET(request: Request) {
     
     console.log('Setting cookie with token...');
     
-    // Try setting the cookie with more permissive options first
+    // Simpler cookie setting
     response.cookies.set('github_token', tokenData.access_token, {
       httpOnly: true,
       secure: true,
       sameSite: 'lax',
       path: '/',
       maxAge: 60 * 60 * 24, // 24 hours
-      domain: process.env.NODE_ENV === 'production' ? 'gitwrap.dev' : undefined
     });
 
-    console.log('Cookie set, redirecting to dashboard...');
+    // Add a test cookie to verify cookie setting works
+    response.cookies.set('test_cookie', 'test_value', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 60 * 60 * 24,
+    });
+
+    console.log('Cookies set, redirecting to dashboard...');
     return response;
   } catch (error) {
     console.error('Detailed OAuth error:', {
