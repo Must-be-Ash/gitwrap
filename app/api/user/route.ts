@@ -6,10 +6,14 @@ export async function GET() {
   const cookieStore = cookies();
   const token = cookieStore.get('github_token');
 
-  console.log('Cookie check:', { hasToken: !!token?.value });
+  console.log('Cookie check:', { 
+    hasToken: !!token?.value,
+    cookieKeys: cookieStore.getAll().map(c => c.name),
+    tokenLength: token?.value?.length
+  });
 
   if (!token?.value) {
-    console.error('No GitHub token found');
+    console.error('No GitHub token found in cookies');
     return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
   }
 
