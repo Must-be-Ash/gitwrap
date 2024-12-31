@@ -11,8 +11,25 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gitwrap.dev'), // Update with your actual domain
-  title: "GitWrap",
-  description: "Your GitHub year in review - Showcase your coding journey with style",
+  title: "GitWrap - GitHub Year in Review",
+  description: "Transform your GitHub activity into a beautiful visualization. View your coding stats, contributions, and achievements in style. Your GitHub year in review made beautiful.",
+  keywords: [
+    "GitHub Stats",
+    "Developer Portfolio",
+    "Git Analytics",
+    "Coding Activity",
+    "GitHub Contributions",
+    "Code Visualization",
+    "Developer Tools",
+    "GitHub Profile",
+    "Contribution Graph",
+    "Coding Metrics",
+    "GitHub Year in Review",
+    "Developer Statistics",
+    "Code Activity Tracker",
+    "GitHub Analytics",
+    "Programming Stats"
+  ],
   icons: {
     icon: [
       {
@@ -39,8 +56,8 @@ export const metadata: Metadata = {
     'mobile-web-app-capable': 'yes'
   },
   openGraph: {
-    title: "GitWrap",
-    description: "Your GitHub year in review - Showcase your coding journey with style",
+    title: "GitWrap - Your GitHub Year in Review",
+    description: "Transform your GitHub activity into a beautiful visualization. View your coding stats, contributions, and achievements in style.",
     url: "https://gitwrap.dev", // Update with your actual domain
     siteName: "GitWrap",
     images: [
@@ -48,7 +65,7 @@ export const metadata: Metadata = {
         url: "/og.jpg", // Create an attractive OG image
         width: 1200,
         height: 630,
-        alt: "GitWrap - Your GitHub Year in Review"
+        alt: "GitWrap - Beautiful GitHub Stats Visualization"
       },
     ],
     locale: "en_US",
@@ -56,9 +73,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GitWrap",
-    description: "Your GitHub year in review - Showcase your coding journey with style",
-    creator: "@yourtwitterhandle", // Update with your Twitter handle
+    title: "GitWrap - GitHub Year in Review",
+    description: "Transform your GitHub activity into a beautiful visualization. Your coding journey, beautifully presented.",
+    creator: "@must_be_ash", // Update with your Twitter handle
     images: ["/og.jpg"], // Same OG image
   },
 };
