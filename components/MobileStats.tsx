@@ -8,6 +8,7 @@ import { toPng } from 'html-to-image'
 import ContributionGraph from './ContributionGraph'
 import RevealCard from './RevealCard'
 import { motion } from 'framer-motion'
+import { useRef } from 'react'
 
 interface MobileStatsProps {
   stats: GitHubUserStats
@@ -34,6 +35,89 @@ const MobileActionButton = ({
 )
 
 export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
+  const devCardRef = useRef<HTMLDivElement>(null)
+
+  const saveImages = async () => {
+    if (!cardRef.current || !devCardRef.current) {
+      console.log('Missing refs:', { shareableCard: !cardRef.current, devCard: !devCardRef.current })
+      return
+    }
+
+    try {
+      // Save ShareableCard
+      const shareableDataUrl = await toPng(cardRef.current, {
+        cacheBust: true,
+        quality: 1.0,
+        backgroundColor: '#000'
+      })
+      const shareableLink = document.createElement('a')
+      shareableLink.download = `${stats.username}-gitwrap-share.png`
+      shareableLink.href = shareableDataUrl
+      shareableLink.click()
+
+      // Small delay to prevent browser issues with multiple downloads
+      await new Promise(resolve => setTimeout(resolve, 500))
+
+      // Save DevCard
+      const devCardDataUrl = await toPng(devCardRef.current, {
+        cacheBust: true,
+        quality: 1.0,
+        backgroundColor: 'transparent'
+      })
+      const devCardLink = document.createElement('a')
+      devCardLink.download = `${stats.username}-gitwrap-card.png`
+      devCardLink.href = devCardDataUrl
+      devCardLink.click()
+
+      toast.success('Both cards saved!')
+    } catch (err) {
+      console.error('Download error:', err)
+      toast.error('Failed to save images')
+    }
+  }
+
+  const shareImages = async () => {
+    if (!cardRef.current || !devCardRef.current) {
+      console.log('Missing refs:', { shareableCard: !cardRef.current, devCard: !devCardRef.current })
+      return
+    }
+
+    try {
+      const shareableDataUrl = await toPng(cardRef.current, {
+        cacheBust: true,
+        quality: 1.0,
+        backgroundColor: '#000'
+      })
+      const devCardDataUrl = await toPng(devCardRef.current, {
+        cacheBust: true,
+        quality: 1.0,
+        backgroundColor: 'transparent'
+      })
+
+      const shareableBlob = await (await fetch(shareableDataUrl)).blob()
+      const devCardBlob = await (await fetch(devCardDataUrl)).blob()
+
+      const files = [
+        new File([shareableBlob], `${stats.username}-gitwrap-share.png`, { type: shareableBlob.type }),
+        new File([devCardBlob], `${stats.username}-gitwrap-card.png`, { type: devCardBlob.type })
+      ]
+
+      if (navigator.share) {
+        await navigator.share({
+          files,
+          title: 'My GitWrap Stats',
+          text: 'Check out my GitHub stats!'
+        })
+      } else {
+        await navigator.clipboard.writeText(window.location.href)
+        toast.success('Link copied to clipboard!')
+      }
+    } catch (err) {
+      console.error('Share error:', err)
+      toast.error('Failed to share')
+    }
+  }
+
   return (
     <div className="p-4 space-y-6 min-h-screen text-white">
       {/* User Info */}
@@ -121,58 +205,24 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
           initial={{ rotateY: 180 }}
           animate={{ rotateY: 0 }}
           transition={{ duration: 1.5, delay: 0.5 }}
-          className="backface-hidden scale-[0.80]"
+          className="backface-hidden scale-[0.80] relative z-10"
         >
-          <RevealCard stats={stats} />
+          <div ref={devCardRef}>
+            <RevealCard stats={stats} />
+          </div>
         </motion.div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 relative z-20">
           <MobileActionButton
             icon={FaDownload}
             label="Save"
-            onClick={() => {
-              if (cardRef.current) {
-                toPng(cardRef.current, { cacheBust: true })
-                  .then((dataUrl) => {
-                    const link = document.createElement('a')
-                    link.download = `${stats.username}-gitwrap.png`
-                    link.href = dataUrl
-                    link.click()
-                  })
-                  .catch((err) => {
-                    console.error(err)
-                    toast.error('Failed to download image')
-                  })
-              }
-            }}
+            onClick={saveImages}
           />
           <MobileActionButton
             icon={FaShare}
             label="Share"
-            onClick={async () => {
-              if (!cardRef.current) return
-              
-              try {
-                const dataUrl = await toPng(cardRef.current, { cacheBust: true })
-                const blob = await (await fetch(dataUrl)).blob()
-                const file = new File([blob], `${stats.username}-gitwrap.png`, { type: blob.type })
-                
-                if (navigator.share) {
-                  await navigator.share({
-                    files: [file],
-                    title: 'My GitWrap Stats',
-                    text: 'Check out my GitHub stats!'
-                  })
-                } else {
-                  await navigator.clipboard.writeText(window.location.href)
-                  toast.success('Link copied to clipboard!')
-                }
-              } catch (err) {
-                console.error(err)
-                toast.error('Failed to share')
-              }
-            }}
+            onClick={shareImages}
           />
         </div>
       </div>

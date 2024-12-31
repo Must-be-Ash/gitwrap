@@ -40,7 +40,16 @@ export default function DevStats({ stats }: DevStatsProps) {
 
   // If mobile, render just the MobileStats component
   if (isMobile) {
-    return <MobileStats stats={stats} cardRef={hiddenCardRef} />
+    return (
+      <>
+        <MobileStats stats={stats} cardRef={cardRef} />
+        {/* Hidden ShareableCard for sharing */}
+        <div className="absolute -top-[9999px] left-0 opacity-0 pointer-events-none">
+          <ShareableCard ref={cardRef} stats={stats} />
+        </div>
+        <Toaster position="bottom-center" theme="dark" />
+      </>
+    )
   }
 
   // Desktop view

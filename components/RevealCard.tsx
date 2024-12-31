@@ -118,21 +118,21 @@ export default function RevealCard({ stats }: RevealCardProps) {
   return (
     <div className="relative flex items-center justify-center">
       <motion.div
-        className="relative"
+        className="relative pointer-events-none"
         initial="hidden"
         animate="visible"
         onAnimationComplete={() => setHasAnimated(true)}
       >
         {/* Background glow */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 opacity-75 blur-3xl"
+          className="absolute inset-0 bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500 opacity-75 blur-3xl pointer-events-none"
           variants={glowVariants}
           animate={isRevealing ? "revealing" : "visible"}
         />
         
         {/* Card Container */}
         <div 
-          className="relative [perspective:1000px] cursor-pointer"
+          className="relative [perspective:1000px] cursor-pointer pointer-events-auto"
           onClick={handleCardClick}
         >
           {/* Card Flipper */}

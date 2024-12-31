@@ -1,60 +1,68 @@
 "use client"
 
-import { useState } from 'react'
 import { FaDownload } from 'react-icons/fa'
 import { toPng } from 'html-to-image'
-import { motion } from 'framer-motion'
-import { GitHubUserStats } from '@/lib/github'
 import { toast } from 'sonner'
+import { GitHubUserStats } from '@/lib/github'
 
 interface SaveButtonProps {
-  stats: GitHubUserStats;
-  cardRef: React.RefObject<HTMLDivElement>;
+  cardRef: React.RefObject<HTMLDivElement>
+  stats: GitHubUserStats
 }
 
-export default function SaveButton({ stats, cardRef }: SaveButtonProps) {
-  const [isGenerating, setIsGenerating] = useState(false)
+export default function SaveButton({ cardRef, stats }: SaveButtonProps) {
+  const saveImages = async () => {
+    if (!cardRef.current) {
+      console.log('Missing shareableCard ref')
+      return
+    }
 
-  const generateAndSave = async () => {
-    setIsGenerating(true)
     try {
-      if (!cardRef.current) {
-        throw new Error('Card element not found')
-      }
-
-      const dataUrl = await toPng(cardRef.current, {
+      // Save ShareableCard
+      const shareableDataUrl = await toPng(cardRef.current, {
         cacheBust: true,
-        pixelRatio: 2
+        quality: 1.0,
+        backgroundColor: '#000'
       })
+      const shareableLink = document.createElement('a')
+      shareableLink.download = `${stats.username}-gitwrap-share.png`
+      shareableLink.href = shareableDataUrl
+      shareableLink.click()
 
-      const link = document.createElement('a')
-      link.download = `gitwrap-${stats.username}.png`
-      link.href = dataUrl
-      link.click()
+      // Small delay to prevent browser issues with multiple downloads
+      await new Promise(resolve => setTimeout(resolve, 500))
 
-      toast.success('GitWrap saved successfully!')
-    } catch (error) {
-      console.error('Error generating image:', error)
-      toast.error('Failed to generate image. Please try again.')
-    } finally {
-      setIsGenerating(false)
+      // Find and save DevCard
+      const devCard = document.querySelector('.dev-card') as HTMLElement
+      if (devCard) {
+        const devCardDataUrl = await toPng(devCard, {
+          cacheBust: true,
+          quality: 1.0,
+          backgroundColor: 'transparent'
+        })
+        const devCardLink = document.createElement('a')
+        devCardLink.download = `${stats.username}-gitwrap-card.png`
+        devCardLink.href = devCardDataUrl
+        devCardLink.click()
+
+        toast.success('Both cards saved!')
+      } else {
+        toast.success('Share card saved!')
+      }
+    } catch (err) {
+      console.error('Download error:', err)
+      toast.error('Failed to save images')
     }
   }
 
   return (
-    <motion.button
-      onClick={generateAndSave}
-      disabled={isGenerating}
-      className="relative px-6 py-3 bg-black border-2 border-green-500 rounded-lg hover:bg-green-500/10 transition-colors"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+    <button
+      onClick={saveImages}
+      className="flex items-center gap-2 bg-white/5 backdrop-blur-lg 
+                 rounded-lg px-6 py-3 border border-green-500/20 text-green-400"
     >
-      <div className="flex items-center space-x-3">
-        <FaDownload className="text-xl text-green-500" />
-        <span className="font-semibold text-green-500">
-          {isGenerating ? 'GENERATING...' : 'SAVE'}
-        </span>
-      </div>
-    </motion.button>
+      <FaDownload className="text-lg" />
+      <span>Save</span>
+    </button>
   )
 } 
