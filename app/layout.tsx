@@ -30,7 +30,6 @@ export const metadata: Metadata = {
       sizes: "180x180",
     },
   },
-  manifest: "/site.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
