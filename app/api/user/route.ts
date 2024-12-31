@@ -6,6 +6,8 @@ export async function GET() {
   const cookieStore = cookies();
   const token = cookieStore.get('github_token');
 
+  console.log('Cookie check:', { hasToken: !!token?.value });
+
   if (!token?.value) {
     console.error('No GitHub token found');
     return NextResponse.json({ error: 'Not authenticated' }, { status: 401 });
@@ -27,6 +29,7 @@ export async function GET() {
     }
 
     const userData = await userResponse.json();
+    console.log('User data fetched:', { username: userData.login });
     
     if (!userData.login) {
       console.error('Invalid user data:', userData);
