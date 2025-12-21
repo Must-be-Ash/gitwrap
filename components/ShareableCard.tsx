@@ -117,11 +117,6 @@ const ShareableCard = forwardRef<HTMLDivElement, ShareableCardProps>(({ stats },
         <FaGithub className="text-3xl text-green-500" />
         <span className="text-xl font-bold text-green-400">GitWrap 2025</span>
       </div>
-
-      {/* CRT scan line effect */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="w-full h-[2px] bg-green-500/20 animate-scanline" />
-      </div>
     </div>
   )
 })

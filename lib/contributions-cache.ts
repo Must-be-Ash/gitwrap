@@ -11,7 +11,6 @@ interface CachedContributions {
     mostActiveDay: {
       date: string;
       count: number;
-      repository: string;
     };
     longestStreak: number;
     topRepository: {
