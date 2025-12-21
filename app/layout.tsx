@@ -93,32 +93,15 @@ export default function RootLayout({
             {children}
           </main>
           
-          <footer className="border-t border-gray-800 bg-black">
-            <div className="max-w-7xl mx-auto px-6 py-8">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="text-sm text-gray-500">
-                  © 2025 GitWrap. All rights reserved.
-                </div>
-                <div className="flex items-center gap-6 text-sm">
-                  <Link
-                    href="https://mustbeash.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-green-400 transition-colors"
-                  >
-                    Created by @must_be_ash
-                  </Link>
-                  <Link
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-green-400 transition-colors"
-                  >
-                    GitHub
-                  </Link>
-                </div>
-              </div>
-            </div>
+          <footer className="text-center py-3 text-gray-500 text-xs">
+            <Link
+              href="https://mustbeash.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-green-400 transition-colors"
+            >
+              made by @must_be_ash
+            </Link>
           </footer>
         </div>
       </body>
