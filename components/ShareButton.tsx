@@ -30,7 +30,7 @@ export default function ShareButton({ cardRef }: ShareButtonProps) {
           const blob = await (await fetch(dataUrl)).blob()
           const file = new File([blob], 'gitwrap.png', { type: 'image/png' })
           const shareData = {
-            title: 'My GitWrap 2024',
+            title: 'My GitWrap 2025',
             text: 'Check out my GitHub year in review!',
             files: [file]
           }

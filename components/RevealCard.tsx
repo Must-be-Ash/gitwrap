@@ -158,7 +158,7 @@ export default function RevealCard({ stats }: RevealCardProps) {
               <h2 className="text-3xl font-bold text-green-400 [text-shadow:0_0_10px_#00ff00]">
                 GitWrap
               </h2>
-              <p className="text-xl font-semibold text-gray-400 mt-2">2024</p>
+              <p className="text-xl font-semibold text-gray-400 mt-2">2025</p>
               <motion.p 
                 className="text-sm text-gray-500 mt-8 text-center"
                 animate={{

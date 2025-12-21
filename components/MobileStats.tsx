@@ -230,7 +230,7 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
       {/* GitWrap Logo */}
       <div className="flex justify-center items-center space-x-2 py-6">
         <FaGithub className="text-xl text-green-500" />
-        <span className="text-base font-bold text-green-400">GitWrap 2024</span>
+        <span className="text-base font-bold text-green-400">GitWrap 2025</span>
       </div>
     </div>
   )

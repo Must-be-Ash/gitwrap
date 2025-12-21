@@ -191,7 +191,7 @@ async function getContributionCalendar(token: string) {
   const query = `
     query {
       viewer {
-        contributionsCollection(from: "2024-01-01T00:00:00Z", to: "${new Date().toISOString()}") {
+        contributionsCollection(from: "2025-01-01T00:00:00Z", to: "${new Date().toISOString()}") {
           contributionCalendar {
             totalContributions
             weeks {
