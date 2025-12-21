@@ -86,9 +86,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full bg-gradient-to-br from-gray-900 to-black">
-      <body className="min-h-full bg-gradient-to-br from-gray-900 to-black">
-        <div className="flex flex-col min-h-screen">
+    <html lang="en" className="h-full bg-black">
+      <body className="min-h-full bg-black">
+        <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-black">
           <main className="flex-grow">
             {children}
           </main>
