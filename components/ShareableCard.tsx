@@ -16,11 +16,14 @@ const ShareableCard = forwardRef<HTMLDivElement, ShareableCardProps>(({ stats },
       ref={ref}
       className="w-[1200px] h-[630px] bg-gradient-to-br from-gray-900 to-black text-white p-6 relative"
     >
-      {/* Neon border - separate elements to avoid top glow */}
-      {/* Left border - starts below top to prevent top glow line */}
+      {/* Neon border */}
+      {/* Top border */}
+      <div className="absolute left-4 right-4 top-4 h-[2px] bg-green-500"
+           style={{ boxShadow: '0 0 20px #00ff00' }} />
+      {/* Left border */}
       <div className="absolute left-4 top-4 bottom-4 w-[2px] bg-green-500"
            style={{ boxShadow: '0 0 20px #00ff00' }} />
-      {/* Right border - starts below top to prevent top glow line */}
+      {/* Right border */}
       <div className="absolute right-4 top-4 bottom-4 w-[2px] bg-green-500"
            style={{ boxShadow: '0 0 20px #00ff00' }} />
       {/* Bottom border */}

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { fetchGitHubStats } from '@/lib/github';
+import { cacheContributions } from '@/lib/contributions-cache';
 
 export async function GET() {
   const cookieStore = cookies();
@@ -44,6 +45,11 @@ export async function GET() {
 
     // Then fetch the stats using the token
     const stats = await fetchGitHubStats(userData.login, token.value);
+    
+    // Cache contribution data for public sharing (non-blocking)
+    cacheContributions(userData.login, stats).catch(err => {
+      console.error('Failed to cache contributions:', err);
+    });
     
     return NextResponse.json(stats);
   } catch (error) {
