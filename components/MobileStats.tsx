@@ -194,7 +194,7 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
       {/* Contributions */}
       <div className="my-4">
         <h3 className="text-lg text-green-400 mb-3">Contributions</h3>
-        <div className="bg-white/5 backdrop-blur-lg rounded-xl p-3">
+        <div className="bg-white/5 backdrop-blur-lg rounded-xl p-4 overflow-x-auto">
           <ContributionGraph contributions={stats.contributions} isMobile={true} />
         </div>
       </div>

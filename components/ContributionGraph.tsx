@@ -23,11 +23,11 @@ export default function ContributionGraph({ contributions, isMobile = false }: C
     return 'bg-green-500'  // Darkest - most commits
   }
 
-  const blockSize = isMobile ? 3 : 10 // Much smaller blocks for mobile
-  const legendBlockSize = isMobile ? 4 : 10
-  const padding = isMobile ? 'p-2' : 'p-6'
-  const gap = isMobile ? 'gap-[1px]' : 'gap-[2px]'
-  const textSize = isMobile ? 'text-xs' : 'text-sm'
+  const blockSize = isMobile ? 6 : 10 // Increased from 3 to 6 for better mobile visibility
+  const legendBlockSize = isMobile ? 8 : 10
+  const padding = isMobile ? 'p-4' : 'p-6'
+  const gap = isMobile ? 'gap-[2px]' : 'gap-[2px]'
+  const textSize = isMobile ? 'text-sm' : 'text-sm'
 
   return (
     <div className={`bg-white/5 backdrop-blur-lg rounded-xl ${padding} border border-green-500/20 w-full`}>
