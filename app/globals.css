@@ -5,18 +5,16 @@
 html {
   background: #000000;
   background: linear-gradient(to bottom right, rgb(17 24 39), rgb(0 0 0));
-  height: 100%;
   min-height: 100%;
   overflow-x: hidden;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  @apply bg-background text-foreground min-h-screen;
+  @apply bg-background text-foreground;
   background: #000000;
   background: linear-gradient(to bottom right, rgb(17 24 39), rgb(0 0 0));
   min-height: 100vh;
-  height: 100%;
   overflow-x: hidden;
 }
 

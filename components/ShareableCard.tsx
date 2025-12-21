@@ -17,8 +17,8 @@ const ShareableCard = forwardRef<HTMLDivElement, ShareableCardProps>(({ stats },
       className="w-[1200px] h-[630px] bg-gradient-to-br from-gray-900 to-black text-white p-6 relative"
     >
       {/* Neon border */}
-      <div className="absolute inset-0 border-l-2 border-r-2 border-b-2 border-green-500 m-4"
-           style={{ boxShadow: '0 0 20px #00ff00' }} />
+      <div className="absolute left-4 right-4 bottom-4 top-4 border-l-2 border-r-2 border-b-2 border-green-500"
+           style={{ boxShadow: '0 0 20px #00ff00', borderTop: 'none' }} />
 
       <div className="flex gap-6 h-full items-start pt-8 pr-8">
         {/* Left Column */}

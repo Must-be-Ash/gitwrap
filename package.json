@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-toast": "^1.2.4",
+    "@vercel/og": "^0.8.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "flubber": "^0.4.2",

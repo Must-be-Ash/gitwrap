@@ -128,7 +128,7 @@ export default function DevStats({ stats }: DevStatsProps) {
           className="fixed bottom-20 left-0 w-full flex justify-center gap-6"
         >
           <SaveButton cardRef={hiddenCardRef} stats={stats} />
-          <ShareButton cardRef={hiddenCardRef} />
+          <ShareButton username={stats.username} />
         </motion.div>
       </div>
 
