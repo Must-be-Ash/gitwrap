@@ -54,6 +54,7 @@ export default async function Image({ params }: { params: { username: string } }
                 display: 'flex',
               }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={stats.avatar_url}
                 alt={stats.name}

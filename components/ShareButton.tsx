@@ -9,7 +9,7 @@ interface ShareButtonProps {
 
 export default function ShareButton({ username }: ShareButtonProps) {
   const shareToTwitter = () => {
-    const text = encodeURIComponent('My 2025 gitwrap')
+    const text = encodeURIComponent('My 2025 Github Wrap')
     const url = encodeURIComponent(`https://www.gitwrap.dev/${username}`)
     const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`
 

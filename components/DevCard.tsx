@@ -1,7 +1,23 @@
 "use client"
 
 import { FaStar, FaCodeBranch, FaCode, FaBolt } from 'react-icons/fa'
-import { SiJavascript, SiPython, SiRuby, SiCplusplus, SiGo, SiRust, SiTypescript } from 'react-icons/si'
+import { 
+  SiJavascript, 
+  SiPython, 
+  SiRuby, 
+  SiCplusplus, 
+  SiGo, 
+  SiRust, 
+  SiTypescript, 
+  SiHtml5,
+  SiPhp,
+  SiCss3,
+  SiCsharp,
+  SiSwift,
+  SiKotlin,
+  SiVuedotjs,
+  SiMysql
+} from 'react-icons/si'
 import { DiJava } from 'react-icons/di'
 import Image from 'next/image'
 import { GitHubUserStats } from '@/lib/github'
@@ -19,6 +35,14 @@ const languageIcons: { [key: string]: JSX.Element } = {
   'C++': <SiCplusplus className="text-pink-600 text-2xl" />,
   Go: <SiGo className="text-cyan-600 text-2xl" />,
   Rust: <SiRust className="text-orange-700 text-2xl" />,
+  HTML: <SiHtml5 className="text-orange-500 text-2xl" />,
+  PHP: <SiPhp className="text-indigo-400 text-2xl" />,
+  CSS: <SiCss3 className="text-blue-500 text-2xl" />,
+  'C#': <SiCsharp className="text-purple-500 text-2xl" />,
+  Swift: <SiSwift className="text-orange-400 text-2xl" />,
+  Kotlin: <SiKotlin className="text-purple-400 text-2xl" />,
+  Vue: <SiVuedotjs className="text-green-400 text-2xl" />,
+  SQL: <SiMysql className="text-blue-400 text-2xl" />,
 }
 
 export default function DevCard({ stats }: DevCardProps) {
