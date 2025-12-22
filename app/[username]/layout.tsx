@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
-export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
-  const { username } = params
+export async function generateMetadata({ params }: { params: Promise<{ username: string }> }): Promise<Metadata> {
+  const { username } = await params
 
   return {
     title: `${username}'s GitWrap 2025`,

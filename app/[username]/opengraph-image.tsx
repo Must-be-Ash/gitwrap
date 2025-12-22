@@ -9,10 +9,13 @@ export const size = {
 }
 export const contentType = 'image/png'
 
-export default async function Image({ params }: { params: { username: string } }) {
+export default async function Image({ params }: { params: Promise<{ username: string }> }) {
   try {
+    // Await params as it's a Promise in Next.js 15
+    const { username } = await params
+
     // Fetch basic GitHub stats (without token, so contribution data will be limited)
-    const stats = await fetchGitHubStats(params.username)
+    const stats = await fetchGitHubStats(username)
 
     // Get top 3 languages
     const topLanguages = Object.entries(stats.languages || {})
@@ -187,10 +190,7 @@ export default async function Image({ params }: { params: { username: string } }
         ...size,
       }
     )
-  } catch (error) {
-    // Log error for debugging
-    console.error('OG Image generation error:', error)
-
+  } catch {
     // Fallback image if user data fetch fails
     return new ImageResponse(
       (

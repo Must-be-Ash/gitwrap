@@ -4,9 +4,9 @@ import { getCachedContributions, mergeContributions } from '@/lib/contributions-
 
 export async function GET(
   request: Request,
-  { params }: { params: { username: string } }
+  { params }: { params: Promise<{ username: string }> }
 ) {
-  const { username } = params;
+  const { username } = await params;
 
   if (!username) {
     return NextResponse.json({ error: 'Username is required' }, { status: 400 });
