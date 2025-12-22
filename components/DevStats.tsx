@@ -48,7 +48,7 @@ export default function DevStats({ stats }: DevStatsProps) {
         {/* Hidden Cards for saving */}
         <div className="absolute -top-[9999px] left-0 opacity-0 pointer-events-none">
           <ShareableCard ref={cardRef} stats={stats} />
-          <div ref={hiddenDevCardRef}>
+          <div ref={hiddenDevCardRef} className="inline-block">
             <DevCard stats={stats} />
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function DevStats({ stats }: DevStatsProps) {
       {/* Hidden Cards for saving */}
       <div className="absolute -top-[9999px] left-0 opacity-0 pointer-events-none">
         <ShareableCard ref={hiddenCardRef} stats={stats} />
-        <div ref={hiddenDevCardRef}>
+        <div ref={hiddenDevCardRef} className="inline-block">
           <DevCard stats={stats} />
         </div>
       </div>

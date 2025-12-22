@@ -93,12 +93,12 @@ export default function RootLayout({
             {children}
           </main>
           
-          <footer className="text-center py-3 text-gray-500 text-xs">
+          <footer className="relative z-50 text-center py-3 text-xs">
             <Link
               href="https://x.com/Must_be_Ash"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-green-400 transition-colors"
+              className="text-green-400 hover:text-green-300 transition-colors cursor-pointer"
             >
               made by @must_be_ash
             </Link>
