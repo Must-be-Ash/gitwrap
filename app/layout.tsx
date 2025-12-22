@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from 'next/link';
+import { Analytics } from '@vercel/analytics/react';
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -98,12 +99,13 @@ export default function RootLayout({
               href="https://x.com/Must_be_Ash"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-400 hover:text-green-300 transition-colors cursor-pointer"
+              className="text-gray-400 hover:text-gray-300 transition-colors cursor-pointer"
             >
               made by @must_be_ash
             </Link>
           </footer>
         </div>
+        <Analytics />
       </body>
     </html>
   );

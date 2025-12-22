@@ -1,6 +1,6 @@
 "use client"
 
-import { FaStar, FaCodeBranch, FaCode, FaBolt, FaGithub, FaDownload, FaShare } from 'react-icons/fa'
+import { FaStar, FaCodeBranch, FaCode, FaBolt, FaDownload, FaShare } from 'react-icons/fa'
 import Image from 'next/image'
 import { GitHubUserStats } from '@/lib/github'
 import { toast } from 'sonner'
@@ -225,12 +225,6 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
             onClick={shareImages}
           />
         </div>
-      </div>
-
-      {/* GitWrap Logo */}
-      <div className="flex justify-center items-center space-x-2 py-6">
-        <FaGithub className="text-xl text-green-500" />
-        <span className="text-base font-bold text-green-400">GitWrap 2025</span>
       </div>
     </div>
   )
