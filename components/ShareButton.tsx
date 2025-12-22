@@ -1,7 +1,6 @@
 "use client"
 
 import { FaShare } from 'react-icons/fa'
-import { motion } from 'framer-motion'
 
 interface ShareButtonProps {
   username: string;
@@ -17,18 +16,13 @@ export default function ShareButton({ username }: ShareButtonProps) {
   }
 
   return (
-    <motion.button
+    <button
       onClick={shareToTwitter}
-      className="relative px-6 py-3 bg-black border-2 border-green-500 rounded-lg hover:bg-green-500/10 transition-colors"
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      className="flex items-center justify-center gap-2 bg-white/5 backdrop-blur-lg 
+                 rounded-lg px-4 py-2 border border-green-500/20 text-green-400 text-sm"
     >
-      <div className="flex items-center space-x-3">
-        <FaShare className="text-xl text-green-500" />
-        <span className="font-semibold text-green-500">
-          SHARE
-        </span>
-      </div>
-    </motion.button>
+      <FaShare className="text-base" />
+      <span>Share</span>
+    </button>
   )
 } 

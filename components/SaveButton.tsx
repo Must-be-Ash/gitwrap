@@ -58,10 +58,10 @@ export default function SaveButton({ cardRef, devCardRef, stats }: SaveButtonPro
   return (
     <button
       onClick={saveImages}
-      className="flex items-center gap-2 bg-white/5 backdrop-blur-lg 
-                 rounded-lg px-6 py-3 border border-green-500/20 text-green-400"
+      className="flex items-center justify-center gap-2 bg-white/5 backdrop-blur-lg 
+                 rounded-lg px-4 py-2 border border-green-500/20 text-green-400 text-sm"
     >
-      <FaDownload className="text-lg" />
+      <FaDownload className="text-base" />
       <span>Save</span>
     </button>
   )

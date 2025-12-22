@@ -130,7 +130,7 @@ export default function DevStats({ stats }: DevStatsProps) {
         {/* Action Buttons - Fixed at bottom */}
         <motion.div
           style={{ opacity: devCardOpacity }}
-          className="fixed bottom-20 left-0 w-full flex justify-center gap-6"
+          className="fixed bottom-20 left-0 w-full flex justify-center gap-3"
         >
           <SaveButton cardRef={hiddenCardRef} devCardRef={hiddenDevCardRef} stats={stats} />
           <ShareButton username={stats.username} />
