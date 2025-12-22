@@ -95,7 +95,7 @@ export default function RootLayout({
           
           <footer className="text-center py-3 text-gray-500 text-xs">
             <Link
-              href="https://mustbeash.com"
+              href="https://x.com/Must_be_Ash"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-green-400 transition-colors"

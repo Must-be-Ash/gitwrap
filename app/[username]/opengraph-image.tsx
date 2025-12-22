@@ -43,6 +43,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
           <div
             style={{
               display: 'flex',
+              flexDirection: 'row',
               alignItems: 'center',
               marginBottom: 40,
             }}
@@ -69,6 +70,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
             <div style={{ display: 'flex', flexDirection: 'column' }}>
               <h1
                 style={{
+                  display: 'flex',
                   fontSize: 72,
                   fontWeight: 'bold',
                   color: '#22c55e',
@@ -80,6 +82,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
               </h1>
               <p
                 style={{
+                  display: 'flex',
                   fontSize: 36,
                   color: '#10b981',
                   margin: 0,
@@ -95,6 +98,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
           <div
             style={{
               display: 'flex',
+              flexDirection: 'row',
               gap: 40,
               marginBottom: 30,
             }}
@@ -110,10 +114,10 @@ export default async function Image({ params }: { params: Promise<{ username: st
                 borderRadius: 8,
               }}
             >
-              <div style={{ fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
+              <div style={{ display: 'flex', fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
                 {(stats.total_commits || 0).toLocaleString()}
               </div>
-              <div style={{ fontSize: 24, color: '#10b981' }}>Commits</div>
+              <div style={{ display: 'flex', fontSize: 24, color: '#10b981' }}>Commits</div>
             </div>
             <div
               style={{
@@ -126,10 +130,10 @@ export default async function Image({ params }: { params: Promise<{ username: st
                 borderRadius: 8,
               }}
             >
-              <div style={{ fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
+              <div style={{ display: 'flex', fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
                 {(stats.total_stars || 0).toLocaleString()}
               </div>
-              <div style={{ fontSize: 24, color: '#10b981' }}>Stars</div>
+              <div style={{ display: 'flex', fontSize: 24, color: '#10b981' }}>Stars</div>
             </div>
             <div
               style={{
@@ -142,10 +146,10 @@ export default async function Image({ params }: { params: Promise<{ username: st
                 borderRadius: 8,
               }}
             >
-              <div style={{ fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
+              <div style={{ display: 'flex', fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
                 {stats.power_level || 0}
               </div>
-              <div style={{ fontSize: 24, color: '#10b981' }}>Power Level</div>
+              <div style={{ display: 'flex', fontSize: 24, color: '#10b981' }}>Power Level</div>
             </div>
           </div>
 
@@ -153,6 +157,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
           <div
             style={{
               display: 'flex',
+              flexDirection: 'row',
               gap: 20,
               marginBottom: 30,
             }}
@@ -161,6 +166,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
               <div
                 key={lang}
                 style={{
+                  display: 'flex',
                   padding: '10px 20px',
                   backgroundColor: '#000',
                   border: '2px solid #22c55e',
@@ -177,6 +183,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
           {/* Footer */}
           <div
             style={{
+              display: 'flex',
               fontSize: 28,
               color: '#22c55e',
               fontWeight: 'bold',
@@ -208,6 +215,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
         >
           <h1
             style={{
+              display: 'flex',
               fontSize: 64,
               fontWeight: 'bold',
               color: '#22c55e',
@@ -217,6 +225,7 @@ export default async function Image({ params }: { params: Promise<{ username: st
           </h1>
           <p
             style={{
+              display: 'flex',
               fontSize: 32,
               color: '#10b981',
             }}

@@ -9,6 +9,7 @@ import SaveButton from './SaveButton'
 import ShareableCard from './ShareableCard'
 import MobileStats from './MobileStats'
 import RevealCard from './RevealCard'
+import DevCard from './DevCard'
 
 interface DevStatsProps {
   stats: GitHubUserStats
@@ -17,6 +18,7 @@ interface DevStatsProps {
 export default function DevStats({ stats }: DevStatsProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const hiddenCardRef = useRef<HTMLDivElement>(null)
+  const hiddenDevCardRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -43,9 +45,12 @@ export default function DevStats({ stats }: DevStatsProps) {
     return (
       <>
         <MobileStats stats={stats} cardRef={cardRef} />
-        {/* Hidden ShareableCard for sharing */}
+        {/* Hidden Cards for saving */}
         <div className="absolute -top-[9999px] left-0 opacity-0 pointer-events-none">
           <ShareableCard ref={cardRef} stats={stats} />
+          <div ref={hiddenDevCardRef}>
+            <DevCard stats={stats} />
+          </div>
         </div>
         <Toaster position="bottom-center" theme="dark" />
       </>
@@ -123,18 +128,21 @@ export default function DevStats({ stats }: DevStatsProps) {
         </div>
 
         {/* Action Buttons - Fixed at bottom */}
-        <motion.div 
+        <motion.div
           style={{ opacity: devCardOpacity }}
           className="fixed bottom-20 left-0 w-full flex justify-center gap-6"
         >
-          <SaveButton cardRef={hiddenCardRef} stats={stats} />
+          <SaveButton cardRef={hiddenCardRef} devCardRef={hiddenDevCardRef} stats={stats} />
           <ShareButton username={stats.username} />
         </motion.div>
       </div>
 
-      {/* Hidden ShareableCard for sharing */}
+      {/* Hidden Cards for saving */}
       <div className="absolute -top-[9999px] left-0 opacity-0 pointer-events-none">
         <ShareableCard ref={hiddenCardRef} stats={stats} />
+        <div ref={hiddenDevCardRef}>
+          <DevCard stats={stats} />
+        </div>
       </div>
 
       <Toaster position="bottom-center" theme="dark" />

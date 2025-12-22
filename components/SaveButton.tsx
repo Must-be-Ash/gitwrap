@@ -7,10 +7,11 @@ import { GitHubUserStats } from '@/lib/github'
 
 interface SaveButtonProps {
   cardRef: React.RefObject<HTMLDivElement>
+  devCardRef: React.RefObject<HTMLDivElement>
   stats: GitHubUserStats
 }
 
-export default function SaveButton({ cardRef, stats }: SaveButtonProps) {
+export default function SaveButton({ cardRef, devCardRef, stats }: SaveButtonProps) {
   const saveImages = async () => {
     if (!cardRef.current) {
       console.log('Missing shareableCard ref')
@@ -32,10 +33,9 @@ export default function SaveButton({ cardRef, stats }: SaveButtonProps) {
       // Small delay to prevent browser issues with multiple downloads
       await new Promise(resolve => setTimeout(resolve, 500))
 
-      // Find and save DevCard
-      const devCard = document.querySelector('.dev-card') as HTMLElement
-      if (devCard) {
-        const devCardDataUrl = await toPng(devCard, {
+      // Save DevCard if ref exists
+      if (devCardRef.current) {
+        const devCardDataUrl = await toPng(devCardRef.current, {
           cacheBust: true,
           quality: 1.0,
           backgroundColor: 'transparent'
