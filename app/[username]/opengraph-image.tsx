@@ -11,11 +11,12 @@ export const contentType = 'image/png'
 
 export default async function Image({ params }: { params: { username: string } }) {
   try {
+    // Fetch basic GitHub stats (without token, so contribution data will be limited)
     const stats = await fetchGitHubStats(params.username)
 
     // Get top 3 languages
-    const topLanguages = Object.entries(stats.languages)
-      .sort(([, a], [, b]) => b - a)
+    const topLanguages = Object.entries(stats.languages || {})
+      .sort(([, a], [, b]) => (b as number) - (a as number))
       .slice(0, 3)
       .map(([lang]) => lang)
 
@@ -107,7 +108,7 @@ export default async function Image({ params }: { params: { username: string } }
               }}
             >
               <div style={{ fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
-                {stats.total_commits.toLocaleString()}
+                {(stats.total_commits || 0).toLocaleString()}
               </div>
               <div style={{ fontSize: 24, color: '#10b981' }}>Commits</div>
             </div>
@@ -123,7 +124,7 @@ export default async function Image({ params }: { params: { username: string } }
               }}
             >
               <div style={{ fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
-                {stats.total_stars.toLocaleString()}
+                {(stats.total_stars || 0).toLocaleString()}
               </div>
               <div style={{ fontSize: 24, color: '#10b981' }}>Stars</div>
             </div>
@@ -139,7 +140,7 @@ export default async function Image({ params }: { params: { username: string } }
               }}
             >
               <div style={{ fontSize: 48, fontWeight: 'bold', color: '#22c55e' }}>
-                {stats.power_level}
+                {stats.power_level || 0}
               </div>
               <div style={{ fontSize: 24, color: '#10b981' }}>Power Level</div>
             </div>
@@ -186,7 +187,10 @@ export default async function Image({ params }: { params: { username: string } }
         ...size,
       }
     )
-  } catch {
+  } catch (error) {
+    // Log error for debugging
+    console.error('OG Image generation error:', error)
+
     // Fallback image if user data fetch fails
     return new ImageResponse(
       (
