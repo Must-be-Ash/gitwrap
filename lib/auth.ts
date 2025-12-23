@@ -12,7 +12,7 @@ export function getGitHubAuthUrl() {
   const params = new URLSearchParams({
     client_id: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID!,
     redirect_uri: redirectUri,
-    scope: 'read:user repo read:org',
+    scope: 'read:user read:org',
     state: Math.random().toString(36).substring(7),
   });
 
