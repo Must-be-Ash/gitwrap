@@ -15,6 +15,17 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white">
+      {/* Navigation */}
+      <nav className="absolute top-0 right-0 p-6 z-10">
+        <a
+          href="/leaderboard"
+          className="text-green-400 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
+        >
+          <span>Leaderboard</span>
+          <span className="text-xl">🏆</span>
+        </a>
+      </nav>
+
       <div className="container mx-auto min-h-screen flex flex-col items-center justify-center gap-2 px-4 py-8 md:px-8 -mt-20 md:-mt-32">
         {/* Text Animation */}
         <div className="w-full flex justify-center items-center">

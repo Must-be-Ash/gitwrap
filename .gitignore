@@ -96,3 +96,6 @@ Thumbs.db
 
 # Yarn Integrity file
 .yarn-integrity
+
+# Scripts
+/scripts

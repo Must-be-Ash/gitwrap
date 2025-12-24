@@ -60,6 +60,17 @@ export default function DevStats({ stats }: DevStatsProps) {
   // Desktop view
   return (
     <div className="min-h-[200vh] bg-gradient-to-br from-gray-900 to-black" ref={containerRef}>
+      {/* Navigation - Fixed at top */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center p-6">
+        <a href="/" className="text-green-400 hover:text-green-300 transition-colors font-medium">
+          ← Home
+        </a>
+        <a href="/leaderboard" className="text-green-400 hover:text-green-300 transition-colors font-medium flex items-center gap-2">
+          <span>Leaderboard</span>
+          <span className="text-xl">🏆</span>
+        </a>
+      </nav>
+
       <div className="hidden md:block">
         <div className="fixed top-0 left-0 w-full h-screen flex flex-col items-center">
           {/* Cards Container */}

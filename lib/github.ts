@@ -177,12 +177,13 @@ function calculatePowerLevel(stats: {
   const commitWeight = 0.6;
   const starWeight = 0.25;
   const forkWeight = 0.15;
-  const languageMultiplier = Object.keys(stats.languages).length / 10 + 1;
+  const languageCount = Object.keys(stats.languages || {}).length;
+  const languageMultiplier = languageCount / 10 + 1;
 
-  const baseScore = 
-    (Math.log(stats.total_commits + 1) * 50 * commitWeight) +
-    (stats.total_stars * starWeight) +
-    (stats.total_forks * forkWeight);
+  const baseScore =
+    (Math.log((stats.total_commits || 0) + 1) * 50 * commitWeight) +
+    ((stats.total_stars || 0) * starWeight) +
+    ((stats.total_forks || 0) * forkWeight);
 
   return Math.round(baseScore * languageMultiplier);
 }
@@ -306,10 +307,12 @@ export async function fetchGitHubStats(username: string, token?: string): Promis
 
     // Convert language bytes to percentages
     const totalBytes = Object.values(languageCounts).reduce((a, b) => a + b, 0);
-    const languages = Object.entries(languageCounts).reduce((acc: {[key: string]: number}, [lang, bytes]) => {
-      acc[lang] = Math.round((bytes / totalBytes) * 100);
-      return acc;
-    }, {});
+    const languages = totalBytes > 0
+      ? Object.entries(languageCounts).reduce((acc: {[key: string]: number}, [lang, bytes]) => {
+          acc[lang] = Math.round((bytes / totalBytes) * 100);
+          return acc;
+        }, {})
+      : {};
 
     // Fetch commit counts for each repo
     const commitCounts = await Promise.all(

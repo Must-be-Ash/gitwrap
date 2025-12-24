@@ -46,7 +46,9 @@ const languageIcons: { [key: string]: JSX.Element } = {
 }
 
 export default function DevCard({ stats }: DevCardProps) {
-  const sortedLanguages = Object.entries(stats.languages).sort((a, b) => b[1] - a[1]).slice(0, 3)
+  const sortedLanguages = stats.languages
+    ? Object.entries(stats.languages).sort((a, b) => b[1] - a[1]).slice(0, 3)
+    : []
 
   return (
     <div className="w-72 h-96 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl shadow-xl p-4 dev-card">

@@ -120,6 +120,17 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
 
   return (
     <div className="p-4 pt-12 space-y-6 min-h-screen text-white">
+      {/* Navigation */}
+      <div className="flex justify-between items-center mb-4">
+        <a href="/" className="text-green-400 hover:text-green-300 transition-colors text-sm">
+          ← Home
+        </a>
+        <a href="/leaderboard" className="text-green-400 hover:text-green-300 transition-colors text-sm flex items-center gap-1">
+          <span>Leaderboard</span>
+          <span>🏆</span>
+        </a>
+      </div>
+
       {/* User Info */}
       <div className="flex items-center space-x-4">
         <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-green-500"
@@ -180,7 +191,7 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
       <div className="my-4">
         <h3 className="text-lg text-green-400 mb-3">Top Languages</h3>
         <div className="grid grid-cols-2 gap-3">
-          {Object.entries(stats.languages)
+          {stats.languages && Object.entries(stats.languages)
             .slice(0, 4)
             .map(([lang, percentage]) => (
               <div key={lang} className="bg-white/5 px-3 py-2 rounded-lg border border-green-500/20">
@@ -188,6 +199,9 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
                 <span className="text-green-400 ml-2 text-sm">{percentage}%</span>
               </div>
             ))}
+          {!stats.languages && (
+            <div className="col-span-2 text-gray-400 text-sm">No language data available</div>
+          )}
         </div>
       </div>
 

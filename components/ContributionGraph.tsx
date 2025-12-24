@@ -6,6 +6,15 @@ interface ContributionGraphProps {
 }
 
 export default function ContributionGraph({ contributions, isMobile = false }: ContributionGraphProps) {
+  // Handle missing contributions data
+  if (!contributions || contributions.length === 0) {
+    return (
+      <div className={`${isMobile ? 'p-4' : 'p-6'} text-gray-400 text-sm text-center`}>
+        No contribution data available
+      </div>
+    )
+  }
+
   // Group contributions by week (7 days)
   const weeks = contributions.reduce((acc, curr, i) => {
     const weekIndex = Math.floor(i / 7)

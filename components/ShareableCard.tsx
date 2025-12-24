@@ -94,7 +94,7 @@ const ShareableCard = forwardRef<HTMLDivElement, ShareableCardProps>(({ stats },
           <div>
             <h3 className="text-xl text-green-400 mb-3">Top Languages</h3>
             <div className="grid grid-cols-4 gap-4">
-              {Object.entries(stats.languages)
+              {stats.languages && Object.entries(stats.languages)
                 .slice(0, 4)
                 .map(([lang, percentage]) => (
                   <div key={lang} className="bg-white/5 px-4 py-2 rounded-lg border border-green-500/20">
@@ -102,6 +102,9 @@ const ShareableCard = forwardRef<HTMLDivElement, ShareableCardProps>(({ stats },
                     <span className="text-green-400 ml-2">{percentage}%</span>
                   </div>
                 ))}
+              {!stats.languages && (
+                <div className="col-span-4 text-gray-400 text-sm">No language data available</div>
+              )}
             </div>
           </div>
 
