@@ -13,8 +13,8 @@ interface Snowflake {
 
 export default function Snowfall() {
   // Generate snowflakes immediately using useMemo
-  const snowflakes = useMemo(() => {
-    return Array.from({ length: 50 }, (_, i) => ({
+  const snowflakes = useMemo<Snowflake[]>(() => {
+    return Array.from({ length: 50 }, (_, i): Snowflake => ({
       id: i,
       left: Math.random() * 100, // Random horizontal position (%)
       animationDuration: 5 + Math.random() * 10, // 5-15 seconds
