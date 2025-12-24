@@ -79,6 +79,33 @@ export default function LeaderboardPage() {
           </Link>
         </motion.div>
 
+        {/* Ranking Formula TLDR */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-6 md:mb-8 bg-gray-800/30 backdrop-blur-sm border border-gray-700 rounded-lg p-4 md:p-6"
+        >
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-2 md:gap-4">
+            <div className="flex items-center gap-2">
+              <span className="text-green-400 text-lg md:text-xl">⚡</span>
+              <h3 className="text-green-400 font-semibold text-sm md:text-base">Power Level Formula:</h3>
+            </div>
+            <div className="text-xs md:text-sm text-gray-300 flex flex-wrap gap-2 md:gap-3">
+              <span><span className="text-yellow-400 font-bold">40%</span> Stars</span>
+              <span className="text-gray-600">•</span>
+              <span><span className="text-purple-400 font-bold">35%</span> Forks</span>
+              <span className="text-gray-600">•</span>
+              <span><span className="text-blue-400 font-bold">20%</span> Commits</span>
+              <span className="text-gray-600">•</span>
+              <span><span className="text-gray-400 font-bold">5%</span> Languages</span>
+            </div>
+          </div>
+          <p className="text-xs text-gray-500 mt-2 md:mt-3">
+            Quality over volume: We favor repos that others star and fork, while still valuing consistent contributions.
+          </p>
+        </motion.div>
+
         {/* Leaderboard */}
         {loading ? (
           <div className="flex justify-center items-center py-20">
