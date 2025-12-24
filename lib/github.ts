@@ -173,25 +173,26 @@ function calculatePowerLevel(stats: {
   total_stars: number;
   total_forks: number;
   languages: { [key: string]: number };
+  longestStreak?: number;
 }): number {
   // Prioritize quality (stars/forks) over volume (commits)
   // 1. Stars - most important (37%)
   // 2. Forks - second most important (33%)
   // 3. Commits - valued for hard work (25%)
-  // 4. Languages - minimal bonus (5%)
+  // 4. Longest Streak - consistency bonus (5%)
 
   const starWeight = 0.37;
   const forkWeight = 0.33;
   const commitWeight = 0.25;
-  const languageBonus = 0.05; // Very low weight, just a small bonus per language
+  const streakBonus = 0.05;
 
-  const languageCount = Object.keys(stats.languages || {}).length;
+  const longestStreak = stats.longestStreak || 0;
 
   const baseScore =
     ((stats.total_stars || 0) * starWeight) +
     ((stats.total_forks || 0) * forkWeight) +
     (Math.log((stats.total_commits || 0) + 1) * 50 * commitWeight) +
-    (languageCount * languageBonus);
+    (longestStreak * streakBonus);
 
   return Math.round(baseScore);
 }
@@ -419,7 +420,7 @@ export async function fetchGitHubStats(username: string, token?: string): Promis
       total_forks,
       languages,
       achievements,
-      contributions: contributionData.weeks.flatMap((week: ContributionWeek) => 
+      contributions: contributionData.weeks.flatMap((week: ContributionWeek) =>
         week.contributionDays.map((day: ContributionDay) => ({
           date: day.date,
           count: day.contributionCount
@@ -427,7 +428,13 @@ export async function fetchGitHubStats(username: string, token?: string): Promis
       ).slice(-52 * 7) // Last year's worth of contributions
     };
 
-    stats.power_level = calculatePowerLevel(stats);
+    stats.power_level = calculatePowerLevel({
+      total_commits: stats.total_commits,
+      total_stars: stats.total_stars,
+      total_forks: stats.total_forks,
+      languages: stats.languages,
+      longestStreak: stats.achievements.longestStreak
+    });
 
     return stats;
   } catch (error) {

@@ -98,7 +98,7 @@ export default function LeaderboardPage() {
               <span className="text-gray-600">•</span>
               <span><span className="text-blue-400 font-bold">25%</span> Commits</span>
               <span className="text-gray-600">•</span>
-              <span><span className="text-gray-400 font-bold">5%</span> Languages</span>
+              <span><span className="text-orange-400 font-bold">5%</span> Longest Streak</span>
             </div>
           </div>
           <p className="text-xs text-gray-500 mt-2 md:mt-3">
