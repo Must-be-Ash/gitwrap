@@ -9,6 +9,15 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+  		keyframes: {
+  			snowfall: {
+  				'0%': { transform: 'translateY(0) translateX(0)' },
+  				'100%': { transform: 'translateY(110vh) translateX(10px)' }
+  			}
+  		},
+  		animation: {
+  			snowfall: 'snowfall linear infinite'
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

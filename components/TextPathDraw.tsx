@@ -46,17 +46,17 @@ export default function TextPathDraw() {
   }, [])
 
   const githubTransform = isMobile ? "translate(154, 250) scale(1.2)" : "translate(150, 250) scale(1.2)"
-  const wrappedTransform = isMobile ? "translate(103, 450) scale(1.2)" : "translate(50, 450) scale(1.2)"
+  const wrappedTransform = isMobile ? "translate(103, 350) scale(1.2)" : "translate(103, 350) scale(1.2)"
 
   return (
     <motion.svg
       width="100%"
       height="100%"
-      viewBox="0 0 800 800"
+      viewBox="0 0 800 600"
       initial="hidden"
       animate="visible"
       variants={container}
-      className="w-full max-w-[600px] md:max-w-[800px]"
+      className="w-full max-w-[600px] md:max-w-[800px] h-auto"
       preserveAspectRatio="xMidYMid meet"
     >
       {/* Word: GitHub */}
@@ -71,7 +71,7 @@ export default function TextPathDraw() {
           strokeLinecap: "round",
           strokeLinejoin: "round",
           fill: "none",
-          filter: "drop-shadow(0 0 8px #00ff00)",
+          filter: "drop-shadow(0 0 8pxrgb(240, 240, 240))",
         }}
       />
 
@@ -83,11 +83,11 @@ export default function TextPathDraw() {
         transform={wrappedTransform}
         style={{
           strokeWidth: 2,
-          stroke: "#00ff00",
+          stroke: "#ffffff",
           strokeLinecap: "round",
           strokeLinejoin: "round",
           fill: "none",
-          filter: "drop-shadow(0 0 8px #00ff00)",
+          filter: "drop-shadow(0 0 8px #FF2E2E)",
         }}
       />
       
