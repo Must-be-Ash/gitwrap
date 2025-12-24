@@ -71,15 +71,29 @@ export default function DevCard({ stats }: DevCardProps) {
       </div>
 
       <div className="flex flex-col items-center space-y-1 my-4 mt-12">
-        <Image 
-          src={stats.avatar_url} 
-          alt={stats.name} 
-          width={96} 
-          height={96} 
-          className="rounded-full border-4 border-white"
-        />
+        <a
+          href={`https://github.com/${stats.username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-full border-4 border-white hover:border-gray-200 transition-colors cursor-pointer"
+        >
+          <Image
+            src={stats.avatar_url}
+            alt={stats.name}
+            width={96}
+            height={96}
+            className="rounded-full"
+          />
+        </a>
         <h2 className="text-xl font-bold text-white">{stats.name}</h2>
-        <p className="text-sm text-center text-white">@{stats.username}</p>
+        <a
+          href={`https://github.com/${stats.username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm text-center text-white hover:text-gray-200 transition-colors cursor-pointer"
+        >
+          @{stats.username}
+        </a>
       </div>
       
       {/* Languages Section */}

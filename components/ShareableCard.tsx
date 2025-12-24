@@ -35,17 +35,29 @@ const ShareableCard = forwardRef<HTMLDivElement, ShareableCardProps>(({ stats },
         <div className="w-1/4 pl-4">
           {/* User Info */}
           <div className="flex flex-col items-center mb-8">
-            <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-green-500 mb-4"
-                 style={{ boxShadow: '0 0 20px #00ff00' }}>
+            <a
+              href={`https://github.com/${stats.username}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-green-500 mb-4 hover:border-green-400 transition-colors cursor-pointer"
+              style={{ boxShadow: '0 0 20px #00ff00' }}
+            >
               <Image
                 src={stats.avatar_url}
                 alt={stats.name}
                 fill
                 className="object-cover"
               />
-            </div>
+            </a>
             <h1 className="text-3xl font-bold mb-2 text-center">{stats.name}</h1>
-            <p className="text-xl text-green-400">@{stats.username}</p>
+            <a
+              href={`https://github.com/${stats.username}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl text-green-400 hover:text-green-300 transition-colors cursor-pointer"
+            >
+              @{stats.username}
+            </a>
           </div>
         </div>
 

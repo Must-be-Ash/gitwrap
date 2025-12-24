@@ -92,11 +92,11 @@ export default function LeaderboardPage() {
               <h3 className="text-green-400 font-semibold text-sm md:text-base">Power Level Formula:</h3>
             </div>
             <div className="text-xs md:text-sm text-gray-300 flex flex-wrap gap-2 md:gap-3">
-              <span><span className="text-yellow-400 font-bold">40%</span> Stars</span>
+              <span><span className="text-yellow-400 font-bold">37%</span> Stars</span>
               <span className="text-gray-600">•</span>
-              <span><span className="text-purple-400 font-bold">35%</span> Forks</span>
+              <span><span className="text-purple-400 font-bold">33%</span> Forks</span>
               <span className="text-gray-600">•</span>
-              <span><span className="text-blue-400 font-bold">20%</span> Commits</span>
+              <span><span className="text-blue-400 font-bold">25%</span> Commits</span>
               <span className="text-gray-600">•</span>
               <span><span className="text-gray-400 font-bold">5%</span> Languages</span>
             </div>

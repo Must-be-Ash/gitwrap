@@ -175,14 +175,14 @@ function calculatePowerLevel(stats: {
   languages: { [key: string]: number };
 }): number {
   // Prioritize quality (stars/forks) over volume (commits)
-  // 1. Stars - most important (40%)
-  // 2. Forks - second most important (35%)
-  // 3. Commits - still valued for hard work (20%)
+  // 1. Stars - most important (37%)
+  // 2. Forks - second most important (33%)
+  // 3. Commits - valued for hard work (25%)
   // 4. Languages - minimal bonus (5%)
 
-  const starWeight = 0.40;
-  const forkWeight = 0.35;
-  const commitWeight = 0.20;
+  const starWeight = 0.37;
+  const forkWeight = 0.33;
+  const commitWeight = 0.25;
   const languageBonus = 0.05; // Very low weight, just a small bonus per language
 
   const languageCount = Object.keys(stats.languages || {}).length;

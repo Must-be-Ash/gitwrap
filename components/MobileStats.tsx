@@ -133,18 +133,30 @@ export default function MobileStats({ stats, cardRef }: MobileStatsProps) {
 
       {/* User Info */}
       <div className="flex items-center space-x-4">
-        <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-green-500"
-             style={{ boxShadow: '0 0 10px #00ff00' }}>
+        <a
+          href={`https://github.com/${stats.username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-green-500 hover:border-green-400 transition-colors cursor-pointer"
+          style={{ boxShadow: '0 0 10px #00ff00' }}
+        >
           <Image
             src={stats.avatar_url}
             alt={stats.name}
             fill
             className="object-cover"
           />
-        </div>
+        </a>
         <div>
           <h1 className="text-2xl font-bold mb-1">{stats.name}</h1>
-          <p className="text-lg text-green-400">@{stats.username}</p>
+          <a
+            href={`https://github.com/${stats.username}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lg text-green-400 hover:text-green-300 transition-colors cursor-pointer"
+          >
+            @{stats.username}
+          </a>
         </div>
       </div>
 
