@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { fetchGitHubStats } from '@/lib/github';
-import { getCachedContributions, mergeContributions } from '@/lib/contributions-cache';
+import { getCachedContributions } from '@/lib/contributions-cache';
 
 export async function GET(
   request: Request,
