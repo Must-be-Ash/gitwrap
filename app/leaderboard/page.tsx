@@ -85,13 +85,13 @@ export default function LeaderboardPage() {
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-green-400"></div>
           </div>
         ) : data && data.users.length > 0 ? (
-          <div className="space-y-6 md:space-y-8">
+          <div>
             {data.users.map((user, index) => {
               const rank = (page - 1) * limit + index + 1;
               const topLanguages = getTopLanguages(user.languages);
 
               return (
-                <Link key={user.username} href={`/${user.username}`}>
+                <Link key={user.username} href={`/${user.username}`} className="block mb-6 md:mb-8 last:mb-0">
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}

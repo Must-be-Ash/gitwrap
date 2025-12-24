@@ -174,18 +174,26 @@ function calculatePowerLevel(stats: {
   total_forks: number;
   languages: { [key: string]: number };
 }): number {
-  const commitWeight = 0.6;
-  const starWeight = 0.25;
-  const forkWeight = 0.15;
+  // Prioritize quality (stars/forks) over volume (commits)
+  // 1. Stars - most important (40%)
+  // 2. Forks - second most important (35%)
+  // 3. Commits - still valued for hard work (20%)
+  // 4. Languages - minimal bonus (5%)
+
+  const starWeight = 0.40;
+  const forkWeight = 0.35;
+  const commitWeight = 0.20;
+  const languageBonus = 0.05; // Very low weight, just a small bonus per language
+
   const languageCount = Object.keys(stats.languages || {}).length;
-  const languageMultiplier = languageCount / 10 + 1;
 
   const baseScore =
-    (Math.log((stats.total_commits || 0) + 1) * 50 * commitWeight) +
     ((stats.total_stars || 0) * starWeight) +
-    ((stats.total_forks || 0) * forkWeight);
+    ((stats.total_forks || 0) * forkWeight) +
+    (Math.log((stats.total_commits || 0) + 1) * 50 * commitWeight) +
+    (languageCount * languageBonus);
 
-  return Math.round(baseScore * languageMultiplier);
+  return Math.round(baseScore);
 }
 
 async function getContributionCalendar(token: string) {
